@@ -1,6 +1,9 @@
 import express, { Express, Request, Response } from 'express';
 import pool from './config/database';
 import authRouter from './api/auth/auth.routes'; 
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 // Inisialisasi aplikasi Express
 const app: Express = express();
