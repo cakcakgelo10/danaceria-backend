@@ -58,6 +58,8 @@ export const loginUser = async (req: Request, res: Response) => {
       return res.status(401).json({ message: 'Password salah' });
     }
 
+    console.log('Nilai JWT_SECRET di dalam controller sebelum sign:', process.env.JWT_SECRET);
+
     // 4. Buat JSON Web Token (JWT)
     const token = jwt.sign(
       { userId: user.id, email: user.email }, // Data yang ingin disimpan di token

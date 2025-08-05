@@ -1,9 +1,12 @@
+import dotenv from 'dotenv';
+dotenv.config();
+
+console.log('Nilai JWT_SECRET setelah config di index.ts:', process.env.JWT_SECRET);
+
 import express, { Express, Request, Response } from 'express';
 import pool from './config/database';
 import authRouter from './api/auth/auth.routes'; 
-import dotenv from 'dotenv';
-
-dotenv.config();
+import userRouter from './api/users/user.routes'; 
 
 // Inisialisasi aplikasi Express
 const app: Express = express();
@@ -19,6 +22,7 @@ app.get('/', (req: Request, res: Response) => {
 
 // Gunakan authRouter untuk semua request yang diawali '/api/auth'
 app.use('/api/auth', authRouter); 
+app.use('/api/users', userRouter);
 
 // Fungsi untuk mengetes koneksi database (biarkan seperti ini)
 const testDatabaseConnection = async () => {
