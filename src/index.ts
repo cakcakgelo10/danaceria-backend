@@ -4,6 +4,7 @@ dotenv.config();
 console.log('Nilai JWT_SECRET setelah config di index.ts:', process.env.JWT_SECRET);
 
 import express, { Express, Request, Response } from 'express';
+import cors from 'cors';
 import pool from './config/database';
 import authRouter from './api/auth/auth.routes'; 
 import userRouter from './api/users/user.routes'; 
@@ -11,6 +12,8 @@ import userRouter from './api/users/user.routes';
 // Inisialisasi aplikasi Express
 const app: Express = express();
 const PORT: number = 3001; // Port untuk server backend
+
+app.use(cors());
 
 // Middleware untuk membaca JSON dari body request
 app.use(express.json());
